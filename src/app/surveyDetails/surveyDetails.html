@@ -1,0 +1,49 @@
+<!-- start date, end date, name, description-->
+<div>
+  <div>
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+  </div>
+  <div class="container">
+    <div class="row">
+      <button class="btn btn-info" ng-click='vm.globalResult()'>Global result</button>
+    </div>
+    <div class="row">
+      <div class="col-md-8 col-sm-7 col-xs-12">
+        <div class="table-container">
+          <table class="table table-bordered table-striped table-hover table-condensed">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Team</th>
+              <th>Rating</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat='member in vm.survey.members track by $index' ng-click="vm.getDetails(member)">
+              <td>{{member.name}}</td>
+              <td>{{member.team}}</td>
+              <td>{{member.result}}</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-5 col-xs-12">
+      <div class="Chart-container sticky-chart card-2 shadow">
+        <div>
+          <div class="radar-container">
+            <canvas id="canvas"></canvas>
+          </div>
+        </div>
+        <div class="survey-comment" ng-show='vm.selectedResult.comment'>
+          <h4>Comment:</h4>
+          <p>
+            {{vm.selectedResult.comment}}
+          </p>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,34 @@
+<nav class="navbar navbar-static-top" ng-class="{'navbar-inverse':vm.user.isAdmin, 'navbar-default':!vm.user.isAdmin}">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#/dashboard">
+        <span class="glyphicon glyphicon-home"></span> Super HR
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
+      <ul class="nav navbar-nav">
+        <li ui-sref-active="active"><a ui-sref="dashBoard">Surveys</a></li>
+        <li ui-sref-active="active"><a ui-sref="teamsList">Teams</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Settings <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#/positions">Positions</a></li>
+            <li class="divider"></li>
+            <li><a href="#/teams">Teams</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li ui-sref-active="active" ng-if="vm.user.isAdmin"><a ui-sref="createSurvey">Create survey</a></li>
+        <li>
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-user"></i> {{vm.user.firstName}} {{vm.user.lastName}} <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#/employee/{{vm.user.id}}">Profile</a></li>
+            <li class="divider"></li>
+            <li><a href="#/teams">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

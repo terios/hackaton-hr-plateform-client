@@ -1,0 +1,227 @@
+/**
+ *  Do not remove the comments below. It's the markers used by wiredep to inject
+ *  less dependencies when defined in the bower.json of your dependencies
+ */
+// bower:less
+// endbower
+
+/**
+ *  If you want to override some bootstrap variables, you have to change values here.
+ *  The list of variables are listed here bower_components/bootstrap/less/variables.less
+ */
+//@navbar-inverse-link-color: #5AADBB;
+@icon-font-path: "../../bower_components/bootstrap/fonts/";
+@import "./theme";
+
+body {
+  background-color: #f1f1f1;
+}
+
+.tabs-container {
+  ul {
+    margin-bottom: 20px;
+  }
+}
+.image-container {
+  text-align: center;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  > div {
+    padding-bottom: 20px;
+  }
+  :nth-child(2n) {
+    .card-1 {
+      background-image: linear-gradient(206deg, #e1e34c, #d6c821);
+    }
+  }
+  :nth-child(2n + 1) {
+    .card-1 {
+      background-image: linear-gradient(206deg, #63dbfe, #4ec6f0);
+    }
+  }
+  :nth-child(3n + 1) {
+    .card-1 {
+      background-image: linear-gradient(206deg, #e8868f, #f0a293);
+    }
+  }
+}
+.shadow {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.do-survey-head {
+  display: flex;
+  background-color: #eaeaea85;
+  padding: 0 20px 10px 20px;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-bottom: 20px;
+
+  .do-survey-date {
+    color: gray;
+    font-size: 12px;
+  }
+  .do-survey-description {
+  }
+}
+.affectation-container {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-around;
+}
+.rule-container {
+  background-color: #ececec !important;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.topic-container {
+  background-color: #ececec !important;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+.question {
+  .responses {
+    input {
+      width: 100%;
+    }
+  }
+}
+.actions-container {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+.Chart-container {
+  width: 100%;
+  max-width: 350px;
+}
+.card-1 {
+  padding: 20px;
+  display: flex;
+  height: 340px;
+  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  background-color: white;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    //margin-bottom: 10px;
+  }
+  .survey-status {
+    text-align: right;
+    .btn-link {
+      color: #585858;
+      padding: 0;
+    }
+  }
+  .title {
+    font-size: 20px;
+    display: block;
+    color: #24345f;
+    height: 70px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  .description {
+    font-size: 14px;
+    color: white;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    height: 140px;
+    overflow: hidden;
+  }
+  .owner {
+    font-size: 12px;
+    span {
+      float: right;
+    }
+  }
+  .action {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    a {
+      border-radius: 25px;
+    }
+  }
+}
+.card-2 {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  background-color: white;
+}
+.card {
+  padding: 30px;
+  background-color: white;
+}
+
+.input-sm {
+  height: 34px;
+  font-size: 14px;
+}
+.submit-btn {
+  //float: right;
+}
+.thumbnail {
+  height: 200px;
+
+  img.pull-right {
+    width: 50px;
+  }
+}
+
+.caroussel-card {
+  padding: 10px;
+  width: 250px;
+  .caroussel-inner-card {
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    background-color: white;
+    height: 250px;
+
+    .caroussel-image-container {
+      height: 200px;
+      img {
+        height: 200px;
+      }
+    }
+    .caroussel-infos-container {
+      padding: 5px 10px 0px 10px;
+      display: flex;
+      flex-direction: column;
+      .name {
+        font-size: 15px;
+        font-weight: bold;
+      }
+      .position {
+        font-size: 13px;
+        color: #7f7f7f;
+      }
+    }
+  }
+}
+.team-container {
+  .team-header {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.no-team-found {
+  text-align: center;
+}
+/**
+ *  Do not remove the comments below. It's the markers used by gulp-inject to inject
+ *  all your less files automatically
+ */
+// injector
+// endinjector

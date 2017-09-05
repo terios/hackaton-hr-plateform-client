@@ -1,0 +1,76 @@
+<!-- start date, end date, name, description-->
+<div>
+
+  <div>
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 card shadow">
+      <div class="do-survey-head">
+        <h3>{{::vm.survey.title}}</h3>
+        <span class="do-survey-date">{{::vm.survey.startAt}} - {{::vm.survey.endAt}}</span>
+        <p class="do-survey-description">
+          {{::vm.survey.description}}
+        </p>
+      </div>
+      <form name="form" novalidate>
+        <div class="form-group" ng-show='vm.survey.type!=360'>
+          <div class="topic-container" ng-repeat='topic in vm.survey.topics' ng-init="$topicIndex = $index">
+            <h3>{{topic.name}}</h3>
+            <div class="question" ng-repeat='question in topic.questions track by $index' ng-init="$questionIndex = $index">
+              <div class="form-group">
+                <span>{{question.name}}</span>
+              </div>
+              <div class="responses form-group">
+                <div class="form-group" ng-repeat='responce in question.responses track by $index' ng-init="$respIndex = $index">
+                  <div class="form-inline">
+                    <label class="radio-inline">
+                      <input type="radio" ng-model='responce.selected' name="name{{$topicIndex}}{{$questionIndex}}{{$respIndex}}"
+                      id="name{{$topicIndex}}{{$questionIndex}}{{$respIndex}}" value="true">{{responce.text}}
+                    </label>
+                  </div>
+                </div>
+              </div>
+              </div>
+          </div>
+            <div class="form-group">
+              <label>Comment:</label>
+              <textarea class="form-control" rows="3" placeholder="do you have any comment" ng-model="vm.survey.comment" name="comment"></textarea>
+            </div>
+          </div>
+        <div class="form-group" ng-show='vm.survey.type==360'>
+          <div class="table-container">
+            <table class="table table-bordered table-striped table-hover table-condensed">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Team</th>
+                <th ng-repeat='ratingCategory in vm.ratingCategories'>{{ratingCategory}}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat='member in vm.users track by $index' ng-click="vm.getDetails(member)">
+                <td>{{::member.firstName}} {{::member.lastName}}</td>
+                <td>{{::member.team.title}}</td>
+                <td ng-repeat='ratingCategory in vm.ratingCategories track by $index'>
+                  <span uib-rating ng-model="member.rate[ratingCategory]" ng-click='vm.rateUser(member, ratingCategory, member.rate[ratingCategory])' max="vm.maxRate" on-hover="vm.hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three','four','five']" aria-labelledby="rating"></span>
+                      <span class="label" ng-class="{'label-warning': percent<2, 'label-info': percent>=2 && percent<4, 'label-success': percent>=4}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+        <div class="form-inline actions-container col-md-12 col-sm-12">
+          <div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg submit-btn" ng-click="vm.doSurvey()">Save Survey</button>
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+</div>

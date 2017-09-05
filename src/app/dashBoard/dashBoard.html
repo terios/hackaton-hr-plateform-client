@@ -1,0 +1,113 @@
+<!-- start date, end date, name, description-->
+<div>
+
+  <div>
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+  </div>
+  <div class="container">
+
+    <uib-tabset active="activeJustified" justified="true" class="tabs-container">
+   <uib-tab index="0" heading="Current Surveys">
+     <div class="row grid" ng-show="vm.currentSurveys.length > 0">
+       <div class="col-xs-6 col-sm-4 col-lg-3" ng-repeat="survey in vm.currentSurveys track by $index">
+         <div class="card-1 shadow">
+           <div class="content">
+             <div ng-if='user.isAdmin' class="survey-status">
+               <button class="btn btn-link" ng-click="vm.stopSurvey(survey._id)">
+                 <i class="glyphicon glyphicon-stop"></i> stop survey
+               </button>
+             </div>
+             <div class="title">
+               {{survey.title}}
+             </div>
+             <div class="description">
+               <p data-ellipsis>
+                 {{survey.description}}
+               </p>
+             </div>
+             <div class="owner" ng-show='survey.createdBy'>
+               <span>{{survey.createdBy.firstName}} {{survey.createdBy.lastName}}</span>
+             </div>
+           </div>
+           <div class="action">
+             <a class="btn btn-primary" href="#/survey/{{survey._id}}">do survey</a>
+             <a ng-if='user.isAdmin' class="btn btn-success" href="#/survey/{{survey._id}}">Results</a>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="row grid" ng-hide="vm.currentSurveys.length > 0">
+       <div class="col-sm-12">
+         <div class="no-team-found">
+           <img src="assets/images/anas.png"/>
+         </div>
+       </div>
+     </div>
+   </uib-tab>
+   <uib-tab index="1" heading="Future Survey">
+     <div class="row grid" ng-show="vm.futureSurveys.length > 0">
+       <div class="col-xs-6 col-sm-4 col-lg-3 "  ng-repeat="survey in vm.futureSurveys track by $index">
+         <div class="card-1 shadow">
+           <div class="content">
+             <div class="title">
+               {{survey.title}}
+             </div>
+             <div class="description">
+               <p data-ellipsis>
+                 {{survey.description}}
+               </p>
+             </div>
+             <div class="owner" ng-show='survey.createdBy'>
+               <span>{{survey.createdBy.firstName}} {{survey.createdBy.lastName}}</span>
+             </div>
+           </div>
+           <div class="action">
+             <a class="btn btn-primary">see results</a>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="row grid" ng-hide="vm.futureSurveys.length > 0">
+       <div class="col-sm-12">
+         <div class="no-team-found">
+           <img src="assets/images/anas.png"/>
+         </div>
+       </div>
+     </div>
+   </uib-tab>
+   <uib-tab index="2" heading="Finished Surveys">
+     <div class="row grid" ng-show="vm.endedSurveys.length > 0">
+       <div class="col-xs-6 col-sm-4 col-lg-3" ng-repeat="survey in vm.endedSurveys track by $index">
+         <div class="card-1 shadow">
+           <div class="content">
+             <div class="title">
+               {{survey.title}}
+             </div>
+             <div class="description">
+               <p data-ellipsis>
+                 {{survey.description}}
+               </p>
+             </div>
+             <div class="owner" ng-show='survey.createdBy'>
+               <span>{{survey.createdBy.firstName}} {{survey.createdBy.lastName}}</span>
+             </div>
+           </div>
+           <div class="action">
+             <a class="btn btn-primary" href="#/survey/"+{{survey.title.replace(/ /g, '+')}}+"/"+{{survey._id}}>see results</a>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="row grid" ng-hide="vm.endedSurveys.length > 0">
+       <div class="col-sm-12">
+         <div class="no-team-found">
+           <img src="assets/images/anas.png"/>
+         </div>
+       </div>
+     </div>
+   </uib-tab>
+ </uib-tabset>
+
+  </div>
+
+</div>

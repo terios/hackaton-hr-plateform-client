@@ -1,0 +1,49 @@
+<!-- start date, end date, name, description-->
+<div>
+
+  <div>
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 card shadow">
+      <form name="form" novalidate>
+        <div class="form-group">
+          <label>Team title:</label>
+          <input type="text" class="form-control" ng-model="vm.team.title" name="title" required="" />
+          <div ng-show="form.$submitted || form.title.$touched">
+            <div ng-show="form.title.$error.required">Team should have a title.</div>
+          </div>
+        </div>
+        <div class="form-inline actions-container col-md-12 col-sm-12">
+          <div class="form-group">
+            <button type="submit" class="btn btn-success btn-lg submit-btn" ng-click="vm.create(form.$valid)">Create team</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="table-container">
+            <table class="table table-bordered table-striped table-hover table-condensed">
+            <thead>
+              <tr>
+                <th>position</th>
+                <th>action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat='team in vm.teams track by $index'>
+                <td>{{team.title}}</td>
+                <td ng-click='vm.remove(team._id)' ><span class="glyphicon glyphicon-trash"></span></td>
+              </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+
+
+      </form>
+
+    </div>
+  </div>
+
+</div>

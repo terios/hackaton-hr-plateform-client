@@ -1,0 +1,35 @@
+<!-- start date, end date, name, description-->
+<div>
+  <div>
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+  </div>
+  <div class="container">
+    <div class="row" ng-repeat='team in vm.teams'>
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="team-container">
+          <div class="team-header">
+            <h3>{{team.title}}</h3>
+            <a class="btn btn-link" href="#/team/{{team._id}}"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+          </div>
+          <div class="owl-carousel slider{{$index}} owl-theme" ng-show="team.users.length > 0">
+            <div class="caroussel-card" ng-repeat='member in team.users'>
+              <div class="caroussel-inner-card" ng-click="vm.goProfile(member._id)">
+                <div class="caroussel-image-container">
+                  <img src="https://api.adorable.io/avatars/230/abo{{$index}}t%40adorable.io">
+                </div>
+                <div class="caroussel-infos-container">
+                  <span class="name">{{member.firstName}} - {{members.lastName}}</span>
+                  <span class="position">{{vm.mapPosition(member.position)}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="no-team-found" ng-show="team.users.length == 0">
+            <img src="assets/images/anas.png"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
