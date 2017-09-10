@@ -62,7 +62,7 @@
           </table>
           </div>
         </div>
-        <div class="form-inline actions-container col-md-12 col-sm-12">
+        <div ng-show='vm.survey.type!=360' class="form-inline actions-container col-md-12 col-sm-12">
           <div class="form-group">
             <button type="submit" class="btn btn-success btn-lg submit-btn" ng-click="vm.doSurvey()">Save Survey</button>
           </div>

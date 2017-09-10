@@ -82,6 +82,9 @@
 
             <div class="form-group">
               <label>Who can do this survey:</label>
+              <select class="form-control" ng-options="option.title for option in rule.whoOptions track by option.value"
+                ng-model="rule.who"></select>
+              <!--
               <div
                 isteven-multi-select
                 input-model="rule.whoOptions"
@@ -92,10 +95,14 @@
                 selection-mode="single"
             >
               </div>
+            -->
             </div>
 
             <div class="form-group">
               <label>Who should they rate:</label>
+              <select class="form-control" ng-options="option.title for option in rule.whomOptions track by option.title"
+                ng-model="rule.whom"></select>
+              <!--
               <div
                 isteven-multi-select
                 input-model="rule.whomOptions"
@@ -106,6 +113,7 @@
                 selection-mode="single"
             >
               </div>
+            -->
             </div>
 
           </div>

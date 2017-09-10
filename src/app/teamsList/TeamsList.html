@@ -9,7 +9,7 @@
         <div class="team-container">
           <div class="team-header">
             <h3>{{team.title}}</h3>
-            <a class="btn btn-link" href="#/team/{{team._id}}"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
+            <a ng-if='user.isAdmin' class="btn btn-link" href="#/team/{{team._id}}"><span class="glyphicon glyphicon-pencil"></span> Edit</a>
           </div>
           <div class="owl-carousel slider{{$index}} owl-theme" ng-show="team.users.length > 0">
             <div class="caroussel-card" ng-repeat='member in team.users'>
@@ -18,7 +18,7 @@
                   <img src="https://api.adorable.io/avatars/230/abo{{$index}}t%40adorable.io">
                 </div>
                 <div class="caroussel-infos-container">
-                  <span class="name">{{member.firstName}} - {{members.lastName}}</span>
+                  <span class="name">{{member.firstName}} - {{member.lastName}}</span>
                   <span class="position">{{vm.mapPosition(member.position)}}</span>
                 </div>
               </div>

@@ -43,7 +43,7 @@
           <select class="form-control" ng-options="team.title for team in vm.teams track by team._id"
             ng-model="vm.user.team" ng-disabled='!vm.isAdmin'></select>
         </div>
-        <div class="form-inline actions-container col-md-12 col-sm-12" ng>
+        <div ng-if='user.isAdmin' class="form-inline actions-container col-md-12 col-sm-12" ng>
           <div class="form-group">
             <button type="submit" class="btn btn-success btn-lg submit-btn" ng-click="vm.updateEmployee(form.$valid)">Update Profile</button>
           </div>

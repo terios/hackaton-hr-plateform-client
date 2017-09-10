@@ -30,8 +30,8 @@
              </div>
            </div>
            <div class="action">
-             <a class="btn btn-primary" href="#/survey/{{survey._id}}">do survey</a>
-             <a ng-if='user.isAdmin' class="btn btn-success" href="#/survey/{{survey._id}}">Results</a>
+             <a ng-if='!user.isAdmin' class="btn btn-primary" href="#/survey/{{survey._id}}">do survey</a>
+             <a ng-if='user.isAdmin' class="btn btn-success" href="#/survey/report/{{survey._id}}">Results</a>
            </div>
          </div>
        </div>
@@ -62,7 +62,7 @@
              </div>
            </div>
            <div class="action">
-             <a class="btn btn-primary">see results</a>
+
            </div>
          </div>
        </div>
@@ -93,7 +93,7 @@
              </div>
            </div>
            <div class="action">
-             <a class="btn btn-primary" href="#/survey/"+{{survey.title.replace(/ /g, '+')}}+"/"+{{survey._id}}>see results</a>
+             <a ng-if='user.isAdmin' class="btn btn-success" href="#/survey/report/{{survey._id}}">Results</a>
            </div>
          </div>
        </div>

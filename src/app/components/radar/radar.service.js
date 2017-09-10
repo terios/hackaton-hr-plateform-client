@@ -22,48 +22,47 @@
     function randomScalingFactor() {
         return Math.round(Math.random() * 100);
     };
-    function getChartConfig(title) {
+    function getChartConfig(title, member) {
       var color = Chart.helpers.color;
+      var chartAxes = [];
+      var chartDataMin = [];
+      var chartDataAvg = [];
+      var chartDataMax = [];
+      for(var key in member.ratings){
+        chartAxes.push(key);
+        chartDataMin.push(member.ratings[key].min);
+        chartDataAvg.push(member.ratings[key].avg);
+        chartDataMax.push(member.ratings[key].max);
+      }
       return {
         type: "radar",
         data: {
-          labels: [
-            "Teamwork",
-            "Leadership",
-            "Happiness",
-            "Innovation",
-            "Sleeping"
-          ],
+          labels: chartAxes,
           datasets: [
             {
-              label: "Current Month",
+              label: "Min rating",
               backgroundColor: color(window.chartColors.red)
                 .alpha(0.2)
                 .rgbString(),
               borderColor: window.chartColors.red,
               pointBackgroundColor: window.chartColors.red,
-              data: [
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-              ],
-            },
-            {
-              label: "Last Month",
+              data: chartDataMin,
+            },{
+              label: "Avg rating",
               backgroundColor: color(window.chartColors.blue)
                 .alpha(0.2)
                 .rgbString(),
               borderColor: window.chartColors.blue,
               pointBackgroundColor: window.chartColors.blue,
-              data: [
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-                randomScalingFactor(),
-              ]
+              data: chartDataAvg,
+            },{
+              label: "Max rating",
+              backgroundColor: color(window.chartColors.green)
+                .alpha(0.2)
+                .rgbString(),
+              borderColor: window.chartColors.green,
+              pointBackgroundColor: window.chartColors.green,
+              data: chartDataMax,
             }
           ]
         },

@@ -119,8 +119,8 @@
           var oldRatings = data.evaluations.find(function(elm) {
             return elm.employee == $rootScope.user.id;
           });
-          oldRatings = oldRatings.ratings;
-          if (oldRatings && oldRatings.length > 0) {
+          if (oldRatings && oldRatings.ratings.length > 0) {
+            oldRatings = oldRatings.ratings;
             vm.users = vm.users.map(function(user) {
               var ratings = oldRatings.filter(function(elm) {
                 return elm.employee == user._id;

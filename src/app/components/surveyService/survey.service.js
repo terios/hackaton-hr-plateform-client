@@ -11,6 +11,8 @@
       getAll: getAll,
       create: create,
       getById: getById,
+      get360ResultsById: get360ResultsById,
+      getMotivationResultsById: getMotivationResultsById,
       getSurveyUser: getSurveyUser,
       getOldRatings: getOldRatings,
       rateUser: rateUser,
@@ -39,6 +41,34 @@
       var deferred = $q.defer();
       $http
         .get(apiHost + "/surveys/" + id)
+        .then(function(response) {
+          deferred.resolve(response.data);
+        })
+        .catch(function(response) {
+          // $log.error('XHR Failed for getContributors.\n' + angular.toJson(error.data, true));
+          deferred.reject(response);
+        });
+      return deferred.promise;
+    }
+
+    function get360ResultsById(id) {
+      var deferred = $q.defer();
+      $http
+        .get(apiHost + "/surveys/result?type=360&survey_id=" + id)
+        .then(function(response) {
+          deferred.resolve(response.data);
+        })
+        .catch(function(response) {
+          // $log.error('XHR Failed for getContributors.\n' + angular.toJson(error.data, true));
+          deferred.reject(response);
+        });
+      return deferred.promise;
+    }
+    function getMotivationResultsById(id, filter) {
+      var filter = filter || "team";
+      var deferred = $q.defer();
+      $http
+        .get(apiHost + "/surveys/result?type=motivation&by="+filter+"&survey_id=" + id)
         .then(function(response) {
           deferred.resolve(response.data);
         })
